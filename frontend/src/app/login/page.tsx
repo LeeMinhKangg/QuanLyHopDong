@@ -94,31 +94,32 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Test credentials info */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-md">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">💡 Thông tin test:</h4>
-            <div className="text-xs text-gray-600 space-y-1">
-              <div>Email: microsoft@gmail.com</div>
-              <div>Email: apple@gmail.com</div>
-              <div>Password: (cần cập nhật trong DB)</div>
-              <Link 
-                href="/api/test-clients" 
-                target="_blank"
-                className="text-indigo-600 hover:text-indigo-500 block mt-2"
-              >
-                → Xem danh sách clients
-              </Link>
+          {/* Backend API Info */}
+          <div className="mt-6 p-4 bg-blue-50 rounded-md">
+            <h4 className="text-sm font-medium text-blue-700 mb-2">🔧 Laravel Client API</h4>
+            <div className="text-xs text-blue-600 space-y-1">
+              <div><strong>Backend:</strong> {process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'}</div>
+              <div><strong>Endpoint:</strong> /customer-portal/login</div>
+              <div><strong>Database:</strong> bảng clients (không phải users)</div>
+              <div className="mt-2 text-blue-700">
+                ✅ Gọi Laravel API → Auth bảng clients → Trả về token
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="text-center">
-          <div className="text-xs text-gray-500">
-            🏢 Portal này dành cho khách hàng xem hợp đồng và tài liệu
+          {/* Test data */}
+          <div className="mt-4 p-4 bg-green-50 rounded-md">
+            <h4 className="text-sm font-medium text-green-700 mb-2">💡 Test Data</h4>
+            <div className="text-xs text-green-600 space-y-1">
+              <div><strong>Email:</strong> microsoft@gmail.com</div>
+              <div><strong>Email:</strong> apple@gmail.com</div>
+              <div className="text-orange-600">
+                ⚠️ Cần thêm password vào bảng clients trước
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

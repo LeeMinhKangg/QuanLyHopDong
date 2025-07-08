@@ -1,21 +1,22 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { authenticateClient } from '@/lib/auth'
+import { apiClient } from '@/lib/api'
 
 export async function GET() {
   return NextResponse.json({ 
-    message: 'Client Login API endpoint',
+    message: 'Customer Portal Login API - Proxy to Laravel Client Backend',
     methods: ['POST'],
-    info: 'Use existing client data from database'
+    backend: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api',
+    endpoint: '/customer-portal/login'
   })
 }
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🚀 Client Login API called')
+    console.log('🚀 Frontend API: Customer Portal Login called')
     
     const body = await request.json()
-    console.log('📧 Request body:', { email: body.email, password: '***' })
+    console.log('📧 Login attempt for:', body.email)
     
     const { email, password } = body
     
@@ -26,29 +27,34 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Xác thực client từ bảng clients
-    const client = await authenticateClient(email, password)
-    console.log('👤 Client found:', client ? 'Yes' : 'No')
+    console.log('🔄 Calling Laravel Client API...')
+    
+    // Gọi đến Laravel Client API
+    const response = await apiClient.login({ email, password })
+    
+    console.log('✅ Laravel Client API response received')
 
-    if (!client) {
+    if (!response.success) {
       return NextResponse.json(
-        { success: false, message: 'Email hoặc mật khẩu không đúng' },
+        { success: false, message: response.message || 'Đăng nhập thất bại' },
         { status: 401 }
       )
     }
 
+    // Trả về dữ liệu từ Laravel (client object)
     return NextResponse.json({
       success: true,
-      message: 'Đăng nhập thành công',
-      client,
+      message: response.message || 'Đăng nhập thành công',
+      client: response.user, // Laravel trả về 'user', frontend expect 'client'
+      token: response.token,
     })
     
   } catch (error) {
-    console.error('❌ Client login error:', error)
+    console.error('❌ Frontend API login error:', error)
     return NextResponse.json(
       { 
         success: false, 
-        message: 'Lỗi server: ' + (error instanceof Error ? error.message : 'Unknown error')
+        message: error instanceof Error ? error.message : 'Lỗi kết nối đến server Laravel'
       },
       { status: 500 }
     )

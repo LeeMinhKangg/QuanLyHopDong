@@ -13,7 +13,8 @@ export default function RegisterPage() {
     confirmPassword: '',
     phone: '',
     address: '',
-    birth: '',
+    company_name: '',
+    tax_code: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -39,15 +40,14 @@ export default function RegisterPage() {
       return;
     }
 
-    if (formData.password.length < 6) {
-      setError('Mật khẩu phải có ít nhất 6 ký tự');
+    if (formData.password.length < 8) {
+      setError('Mật khẩu phải có ít nhất 8 ký tự');
       setLoading(false);
       return;
     }
 
     try {
-      const { confirmPassword, ...registerData } = formData;
-      await register(registerData);
+      await register(formData);
       router.push('/dashboard');
     } catch (err: any) {
       setError(err.message);
@@ -105,18 +105,50 @@ export default function RegisterPage() {
               />
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  Số điện thoại
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="0901234567"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="tax_code" className="block text-sm font-medium text-gray-700">
+                  Mã số thuế
+                </label>
+                <input
+                  id="tax_code"
+                  name="tax_code"
+                  type="text"
+                  value={formData.tax_code}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="0123456789"
+                />
+              </div>
+            </div>
+
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                Số điện thoại
+              <label htmlFor="company_name" className="block text-sm font-medium text-gray-700">
+                Tên công ty
               </label>
               <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
+                id="company_name"
+                name="company_name"
+                type="text"
+                value={formData.company_name}
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="0123456789"
+                placeholder="Công ty TNHH ABC"
               />
             </div>
 
@@ -131,54 +163,42 @@ export default function RegisterPage() {
                 value={formData.address}
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="123 Đường ABC, Quận XYZ, TP.HCM"
+                placeholder="123 Đường ABC, Quận 1, TP.HCM"
               />
             </div>
 
-            <div>
-              <label htmlFor="birth" className="block text-sm font-medium text-gray-700">
-                Ngày sinh
-              </label>
-              <input
-                id="birth"
-                name="birth"
-                type="date"
-                value={formData.birth}
-                onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Mật khẩu *
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="••••••••"
+                />
+              </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Mật khẩu *
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="••••••••"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                Xác nhận mật khẩu *
-              </label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="••••••••"
-              />
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                  Xác nhận mật khẩu *
+                </label>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="••••••••"
+                />
+              </div>
             </div>
 
             {error && (
@@ -195,16 +215,16 @@ export default function RegisterPage() {
               {loading ? 'Đang đăng ký...' : 'Đăng ký'}
             </button>
           </form>
-        </div>
 
-        <div className="text-center">
-          <Link 
-            href="/api/test-clients" 
-            target="_blank"
-            className="text-xs text-indigo-600 hover:text-indigo-500"
-          >
-            💡 Xem danh sách client có sẵn để test
-          </Link>
+          {/* Backend API Info */}
+          <div className="mt-6 p-4 bg-green-50 rounded-md">
+            <h4 className="text-sm font-medium text-green-700 mb-2">✅ Laravel Client API</h4>
+            <div className="text-xs text-green-600 space-y-1">
+              <div><strong>Endpoint:</strong> /customer-portal/register</div>
+              <div><strong>Database:</strong> Tạo record mới trong bảng clients</div>
+              <div><strong>Token:</strong> Sanctum API token cho authentication</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
