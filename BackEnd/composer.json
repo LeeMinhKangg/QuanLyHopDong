@@ -10,6 +10,7 @@
         "filament/filament": "^3.3",
         "flowframe/laravel-trend": "^0.4.0",
         "laravel/framework": "^11.31",
+        "laravel/sanctum": "^4.1",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
         "phpoffice/phpspreadsheet": "^1.29",
