@@ -1,0 +1,1600 @@
+
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cache`
+--
+
+CREATE TABLE `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('livewire-rate-limiter:a17961fa74e9275d529f489537f179c05d50c2f3', 'i:1;', 1752132233),
+('livewire-rate-limiter:a17961fa74e9275d529f489537f179c05d50c2f3:timer', 'i:1752132233;', 1752132233);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cache_locks`
+--
+
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Phần mềm', 'Các phần mềm bao gồm Website, App Mobile, App Desktop.', '2025-04-14 18:12:56', '2025-04-14 18:12:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `tax_code` varchar(255) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `birth` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `clients`
+--
+
+INSERT INTO `clients` (`id`, `name`, `email`, `password`, `phone`, `address`, `company_name`, `tax_code`, `remember_token`, `created_at`, `updated_at`, `avatar`, `birth`) VALUES
+(6, 'Công Ty Microsoft', 'microsoft@gmail.com', '123', '0369874512', 'USA', NULL, NULL, NULL, '2025-04-14 17:20:11', '2025-05-07 00:56:39', 'avatars/microsoft-campus__w630-365x200.webp', '2003-10-20'),
+(7, 'Công Ty Apple', 'apple@gmail.com', '', '0365847952', 'USA', NULL, NULL, NULL, '2025-04-14 17:32:50', '2025-05-07 00:57:32', 'avatars/58778eb3-tru-so-apple-e1555688697853_21dfaf96554648eb9bed5ceb37a70373_1024x1024.webp', '2003-03-11'),
+(17, 'TRƯỜNG CAO ĐẲNG DU LỊCH CẦN THƠ', NULL, '', '0292 3815 252', 'Số 47 Đường số 1, KV3 Sông Hậu, Phường Cái Khế, Quận Ninh Kiều, TP. Cần Thơ', NULL, NULL, NULL, '2025-05-16 15:43:21', '2025-05-16 15:43:21', NULL, NULL),
+(22, 'Xe máy Thịnh Phát', 'thinhphat@gmail.com', '$2y$12$Fg8/ethafRQQZeBLD4jdJO49nG5ru8hcFzFYsKyffebXhTcoIg79S', '0928282821', '123 SVH', 'Xe máy thịnh phát', '12324324', NULL, '2025-07-07 22:43:18', '2025-07-07 22:43:18', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contracts`
+--
+
+CREATE TABLE `contracts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contract_number` varchar(255) NOT NULL,
+  `contract_type_id` bigint(20) UNSIGNED NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `total_value` decimal(15,2) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `contract_status_id` bigint(20) UNSIGNED NOT NULL,
+  `contract_purpose` varchar(255) DEFAULT NULL,
+  `contract_form` varchar(255) DEFAULT NULL,
+  `pay_method` varchar(255) DEFAULT NULL,
+  `payment_terms` text DEFAULT NULL,
+  `legal_basis` text DEFAULT NULL,
+  `payment_requirements` text DEFAULT NULL,
+  `pay` tinyint(1) DEFAULT 0,
+  `liquidation` tinyint(1) DEFAULT 0,
+  `client_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `sign_date` date DEFAULT NULL,
+  `department_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `sales_employee_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contracts`
+--
+
+INSERT INTO `contracts` (`id`, `contract_number`, `contract_type_id`, `start_date`, `end_date`, `total_value`, `description`, `created_at`, `updated_at`, `contract_status_id`, `contract_purpose`, `contract_form`, `pay_method`, `payment_terms`, `legal_basis`, `payment_requirements`, `pay`, `liquidation`, `client_id`, `sign_date`, `department_id`, `sales_employee_id`) VALUES
+(8, '02', 2, '2025-05-09', '2025-05-30', 45000000.00, NULL, '2025-05-09 01:49:25', '2025-07-01 00:01:57', 2, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 7, '2025-05-09', 1, 4),
+(9, '03', 2, '2025-05-09', '2025-05-30', 100000000.00, NULL, '2025-05-09 02:01:10', '2025-05-09 02:01:10', 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 7, '2025-05-09', 1, 6),
+(17, '2024041601', 13, '2024-05-10', '2024-08-31', 98000000.00, NULL, '2025-05-16 17:10:03', '2025-05-22 19:57:19', 6, 'HỆ THỐNG QUẢN LÝ ĐÀO TẠO', 'Trọn gói', 'cash', 'Sau khi có biên bản nghiệm thu, bàn giao và đưa vào sử dụng, trong vòng 10 ngày làm việc kể từ ngày bên B nhận được đầy đủ hồ sơ thanh toán của bên A. Bên B sẽ thanh toán cho bên A 100% giá trị hợp đồng.', 'Căn cứ Bộ Luật Dân sự  số 91/2015/QH13 ngày 24 tháng 11 năm 2015 của nước CHXHCN Việt Nam; Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 6 năm 2005 của nước CHXHCN Việt Nam; Căn cứ Luật Đấu thầu số 22/2023/QH15 ngày 23 tháng 6 năm 2023; Căn cứ Nghị định số 24/2024/NĐ-CP ngày 27 tháng 02 năm 2024 quy định chi tiết một số điều và biện pháp thi hành Luật Đấu thầu về lựa chọn nhà thầu; Căn cứ Quyết định số 4219/QĐ-BVHTTDL ngày 29 tháng 12 năm 2024 của Bộ Văn hóa Thể thao và Du lịch về việc giao dự toán chi NSNN năm 2024; Căn cứ Quyết định số 116/QĐ-CDDLCT ngày 19 tháng 4 năm 2024 phê duyệt chỉ định thầu: “Cung cấp hệ thống quản lý đào tạo” của Trường Cao đẳng Du lịch Cần Thơ;; Căn cứ vào nhu cầu thực tế;', 'Biên bản nghiệm thu và bàn giao,; Đề nghị thanh toán của bên A; Hóa đơn tài chính hợp lệ,; Biên bản thanh lý hợp đồng.; Bảng xác định giá trị khối lượng công việc hoàn thành (Mẫu số 08a)', 1, 1, 17, '2024-05-10', 1, 6),
+(18, 'HD001', 1, '2025-01-01', '2025-12-31', 1000000.00, NULL, '2025-07-06 16:37:15', '2025-07-06 16:37:15', 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 6, NULL, NULL, NULL),
+(19, '09', 2, '2025-07-07', '2025-08-10', 111111111.00, NULL, '2025-07-08 08:19:41', '2025-07-08 08:27:35', 3, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 22, '2025-07-01', 4, 1),
+(20, '10', 2, '2025-07-19', '2025-07-17', 1000000.00, NULL, '2025-07-08 08:47:01', '2025-07-08 09:48:09', 1, NULL, NULL, '', '', '', '', 1, 0, 22, '2025-07-05', 4, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_adjustments`
+--
+
+CREATE TABLE `contract_adjustments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `adjusted_field` enum('start_date','end_date','total_value') NOT NULL,
+  `old_value` varchar(255) NOT NULL,
+  `new_value` varchar(255) NOT NULL,
+  `adjusted_by` bigint(20) UNSIGNED NOT NULL,
+  `reason` text NOT NULL,
+  `adjustment_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_attachments`
+--
+
+CREATE TABLE `contract_attachments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `file_path` varchar(255) NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `uploaded_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_notes`
+--
+
+CREATE TABLE `contract_notes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `content` text NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_participants`
+--
+
+CREATE TABLE `contract_participants` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `party_type` enum('A','B','C') NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `tax_code` varchar(255) NOT NULL,
+  `representative_position` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `bank_account` varchar(255) NOT NULL,
+  `bank_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contract_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contract_participants`
+--
+
+INSERT INTO `contract_participants` (`id`, `party_type`, `address`, `tax_code`, `representative_position`, `phone`, `bank_account`, `bank_name`, `created_at`, `updated_at`, `full_name`, `email`, `contract_id`) VALUES
+(6, 'A', '56115DG', '217060175', 'Giám đốc', '087733455', '1224566', 'Mb', '2025-05-22 19:48:30', '2025-05-22 19:53:41', 'Anh long sport', 'anhlong@gmail.com', NULL),
+(7, 'B', 'Minh Quy Đường 71', '217060195', 'Giám đốc', '017643399', '3546667', 'vcb', '2025-05-22 19:51:28', '2025-05-22 19:55:45', 'Culy', 'culy@gmail.com', 17),
+(8, 'B', '', '', '', '', '', '', '2025-07-08 09:48:09', '2025-07-08 09:48:09', '', '', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_products`
+--
+
+CREATE TABLE `contract_products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `number` int(11) NOT NULL,
+  `total` decimal(15,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contract_products`
+--
+
+INSERT INTO `contract_products` (`id`, `product_id`, `contract_id`, `number`, `total`, `created_at`, `updated_at`) VALUES
+(12, 3, 17, 1, 40000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(13, 4, 17, 1, 20000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(14, 5, 17, 1, 7000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(15, 6, 17, 1, 5000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(16, 7, 17, 1, 10000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(17, 8, 17, 1, 6000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03'),
+(18, 9, 17, 1, 10000000.00, '2025-05-16 17:10:03', '2025-05-16 17:10:03');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_statuses`
+--
+
+CREATE TABLE `contract_statuses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contract_statuses`
+--
+
+INSERT INTO `contract_statuses` (`id`, `name`, `created_at`, `updated_at`, `code`) VALUES
+(1, 'Chờ duyệt', '2025-04-16 12:34:52', '2025-05-04 22:34:10', 'choduyet'),
+(2, 'Đã duyệt', '2025-04-16 12:35:23', '2025-05-04 22:35:54', 'daduyet'),
+(3, 'Dự thảo', '2025-04-16 12:35:36', '2025-05-04 22:36:03', 'duthao'),
+(4, 'Thương thảo', '2025-04-16 12:36:26', '2025-05-04 22:36:12', 'thuongthao'),
+(5, 'Trình ký', '2025-04-16 12:36:39', '2025-05-04 22:36:19', 'trinhky'),
+(6, 'Đã ký', '2025-04-16 12:36:50', '2025-05-04 22:36:27', 'daky');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_terms`
+--
+
+CREATE TABLE `contract_terms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `term_type` varchar(255) NOT NULL,
+  `conent` text NOT NULL,
+  `order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contract_terms`
+--
+
+INSERT INTO `contract_terms` (`id`, `contract_id`, `term_type`, `conent`, `order`, `created_at`, `updated_at`) VALUES
+(2, 17, 'Điều khoản 2', 'anh long ', 2, '2025-05-22 20:00:19', '2025-05-22 20:00:19'),
+(3, 17, 'Điều Khoản 1', 'Anh Long không được đi vệ sinh', 1, '2025-05-22 20:03:35', '2025-05-22 20:03:35'),
+(4, 19, 'Điều khoản 1', 'Xe phải đảm bảo chất lượng', 1, '2025-07-08 08:28:25', '2025-07-08 08:28:25');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `contract_types`
+--
+
+CREATE TABLE `contract_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `contract_types`
+--
+
+INSERT INTO `contract_types` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Hợp Đồng Lao Động', 'Hợp đồng giữa công ty và nhân viên', '2025-03-27 18:49:19', '2025-05-14 15:28:56'),
+(2, 'Hợp Đồng Cung Cấp Dịch Vụ', 'Cung cấp các dịch vụ từ cơ bản đến nâng cao', '2025-03-28 14:49:40', '2025-03-28 14:50:51'),
+(3, 'Hợp Đồng Mua Bán', 'Hợp đồng mua bán các loại mặt hàng công nghệ', '2025-03-28 14:51:37', '2025-03-28 14:51:37'),
+(13, 'HỢP ĐỒNG KINH TẾ', NULL, '2025-05-16 15:43:21', '2025-05-16 15:43:21');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `manager_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `departments`
+--
+
+INSERT INTO `departments` (`id`, `code`, `name`, `description`, `manager_id`, `created_at`, `updated_at`) VALUES
+(1, 'HR', 'Phòng Nhân sự', 'Quản lý nhân sự, tuyển dụng và đào tạo', 3, '2025-05-04 00:12:40', '2025-06-19 06:34:58'),
+(2, 'AC', 'Phòng Kế Toán', 'Phòng Kế toán đóng vai trò trung tâm quản lý và giám sát các hoạt động tài chính của công ty, đảm bảo tính minh bạch, tuân thủ quy định pháp luật và chính sách nội bộ.', 7, '2025-06-19 06:29:55', '2025-06-19 06:34:39'),
+(3, 'MR', 'Phòng Marketing', 'Đơn vị trực tiếp quản lý chiến lược thương hiệu, xây dựng kế hoạch truyền thông và phát triển thị trường cho sản phẩm dịch vụ của công ty.', 6, '2025-06-19 06:32:43', '2025-06-19 06:32:43'),
+(4, 'CS', 'Phòng chăm sóc khách hàng', 'Đơn vị trực tiếp hỗ trợ và giải đáp thắc mắc của khách hàng, đảm bảo trải nghiệm và sự hài lòng tối đa.', 5, '2025-06-19 06:34:18', '2025-06-19 06:34:18'),
+(5, 'BU', 'Phòng kinh doanh', 'Đơn vị trực tiếp phát triển thị trường, tìm kiếm khách hàng mới và mở rộng mối quan hệ kinh doanh.', 4, '2025-06-19 06:45:00', '2025-06-19 06:45:00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `export_templates`
+--
+
+CREATE TABLE `export_templates` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `file_path` varchar(255) NOT NULL,
+  `contract_type_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `export_templates`
+--
+
+INSERT INTO `export_templates` (`id`, `name`, `file_path`, `contract_type_id`, `description`, `created_at`, `updated_at`) VALUES
+(5, 'Mẫu 1', 'export-templates/Mau1.docx', 2, 'Mô tả mẫu 1', '2025-05-08 19:35:02', '2025-05-08 19:35:02'),
+(6, 'Mẫu 2 ', 'export-templates/TMDT-ON.docx', 1, 'Mô tả', '2025-05-11 21:22:00', '2025-05-11 21:22:00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `features`
+--
+
+CREATE TABLE `features` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `features`
+--
+
+INSERT INTO `features` (`id`, `code`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'capnhatthongtin', 'Cập nhật thông tin', 'Quyền cập nhật thông tin', '2025-05-04 00:54:14', '2025-05-04 01:06:52'),
+(2, 'hanghoa', 'Hàng hóa', 'Quản lý hàng hóa', '2025-05-04 00:54:57', '2025-05-04 01:10:31'),
+(3, 'xetduyet', 'Xét duyệt', 'Xét duyệt hợp đồng', '2025-05-04 00:55:33', '2025-05-04 01:10:54'),
+(4, 'duthao', 'Dự thảo', 'Dự thảo hợp đồng', '2025-05-04 00:56:12', '2025-05-04 01:11:05'),
+(5, 'thuongthao', 'Thương thảo', 'Thương thảo hợp đồng', '2025-05-04 01:00:05', '2025-05-04 01:11:18'),
+(6, 'trinhky', 'Trình ký', 'Trình ký hợp đồng', '2025-05-04 01:00:37', '2025-05-04 01:11:28'),
+(7, 'daky', 'Đã ký', 'Đã ký hợp đồng', '2025-05-04 01:01:28', '2025-05-04 01:11:37'),
+(8, 'tinhtrangthuchien', 'Tình trạng thực hiện', 'Tình trạng thực hiện hợp đồng', '2025-05-04 01:02:23', '2025-05-04 01:11:50'),
+(9, 'dieuchinh', 'Điều chỉnh', 'Điều chỉnh hợp đồng', '2025-05-04 01:02:48', '2025-05-04 01:12:00'),
+(10, 'thanhly', 'Thanh lý', 'Thanh lý hợp đồng', '2025-05-04 01:03:07', '2025-05-04 01:12:09'),
+(11, 'thanhtoan', 'Thanh toán', 'Thanh toán hợp đồng', '2025-05-04 01:03:58', '2025-05-04 01:03:58'),
+(12, 'hoadon', 'Hóa đơn', 'Hóa đơn hợp đồng', '2025-05-04 01:04:25', '2025-05-04 01:04:25'),
+(13, 'dinhkem', 'Đính kèm', 'Đính kèm hợp đồng', '2025-05-04 01:04:47', '2025-05-04 01:04:47'),
+(14, 'ghichu', 'Ghi chú', 'Ghi chú hợp đồng', '2025-05-04 01:05:07', '2025-05-04 01:05:07'),
+(15, 'xoa', 'Xóa', 'Xóa hợp đồng', '2025-05-04 01:05:40', '2025-05-04 01:05:40');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `general_configurations`
+--
+
+CREATE TABLE `general_configurations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `alert_anabled` tinyint(1) NOT NULL DEFAULT 0,
+  `alert_days_before` int(10) UNSIGNED DEFAULT NULL,
+  `round_total` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `general_configurations`
+--
+
+INSERT INTO `general_configurations` (`id`, `alert_anabled`, `alert_days_before`, `round_total`, `created_at`, `updated_at`) VALUES
+(1, 1, 20, 1, '2025-05-05 07:27:43', '2025-06-19 06:23:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `general_configuration_alert_targets`
+--
+
+CREATE TABLE `general_configuration_alert_targets` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `general_configuration_alert_targets`
+--
+
+INSERT INTO `general_configuration_alert_targets` (`id`, `role_id`, `created_at`, `updated_at`) VALUES
+(284, 2, '2025-06-19 06:23:56', '2025-06-19 06:23:56'),
+(285, 6, '2025-06-19 06:23:56', '2025-06-19 06:23:56'),
+(286, 1, '2025-06-19 06:23:56', '2025-06-19 06:23:56'),
+(287, 3, '2025-06-19 06:23:56', '2025-06-19 06:23:56'),
+(288, 4, '2025-06-19 06:23:56', '2025-06-19 06:23:56'),
+(289, 5, '2025-06-19 06:23:56', '2025-06-19 06:23:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `general_configuration_auto_updates`
+--
+
+CREATE TABLE `general_configuration_auto_updates` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `key` varchar(255) NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `general_configuration_auto_updates`
+--
+
+INSERT INTO `general_configuration_auto_updates` (`id`, `key`, `enable`, `created_at`, `updated_at`) VALUES
+(1, 'phan_quyen_truy_cap', 1, '2025-05-05 08:46:37', '2025-06-19 06:23:56'),
+(2, 'tinh_trang_thanh_ly', 1, '2025-05-05 09:34:33', '2025-06-19 06:23:56'),
+(3, 'tinh_trang_thanh_toan', 1, '2025-05-05 09:34:51', '2025-06-19 06:23:56'),
+(4, 'tinh_trang_xuat_hoa_don', 1, '2025-05-05 09:35:05', '2025-06-19 06:23:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `general_configuration_notifications`
+--
+
+CREATE TABLE `general_configuration_notifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `status_id` bigint(20) UNSIGNED NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `general_configuration_notifications`
+--
+
+INSERT INTO `general_configuration_notifications` (`id`, `role_id`, `status_id`, `enable`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(2, 1, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(3, 1, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(4, 1, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(5, 1, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(6, 1, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(7, 2, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(8, 2, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(9, 2, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(10, 2, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(11, 2, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(12, 2, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(13, 3, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(14, 3, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(15, 3, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(16, 3, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(17, 3, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(18, 3, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(19, 4, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(20, 4, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(21, 4, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(22, 4, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(23, 4, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(24, 4, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(25, 5, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(26, 5, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(27, 5, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(28, 5, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(29, 5, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(30, 5, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(31, 6, 1, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(32, 6, 2, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(33, 6, 3, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(34, 6, 4, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(35, 6, 5, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56'),
+(36, 6, 6, 1, '2025-05-05 03:19:52', '2025-06-19 06:23:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `invoices`
+--
+
+CREATE TABLE `invoices` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `invoice_number` varchar(255) NOT NULL,
+  `status` enum('exported','nonexport') NOT NULL DEFAULT 'nonexport',
+  `amount` decimal(15,2) NOT NULL,
+  `issue_date` date NOT NULL,
+  `due_date` date NOT NULL,
+  `note` text NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `job_batches`
+--
+
+CREATE TABLE `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2025_03_28_080351_create_clients_table', 1),
+(5, '2025_03_28_080352_create_contract_types_table', 1),
+(6, '2025_03_28_080353_create_contracts_table', 1),
+(7, '2025_04_01_021422_create_roles_table', 1),
+(8, '2025_04_01_022050_add_fields_to_clients_table', 1),
+(9, '2025_04_01_023057_create_contract_statuses_table', 1),
+(10, '2025_04_01_023359_add_fields_to_contracts_table', 1),
+(11, '2025_04_01_031258_create_contract_attachments_table', 1),
+(12, '2025_04_01_032038_create_contract_notes_table', 1),
+(13, '2025_04_01_032456_create_invoices_table', 1),
+(14, '2025_04_01_033435_create_payments_table', 1),
+(15, '2025_04_01_035015_create_contract_adjustments_table', 1),
+(16, '2025_04_01_070208_create_categories_table', 1),
+(17, '2025_04_01_070408_create_products_table', 1),
+(18, '2025_04_01_071042_create_contract_products_table', 1),
+(19, '2025_04_01_081117_add_fields_to_products', 1),
+(20, '2025_04_01_083217_create_contract_participants_table', 1),
+(21, '2025_04_01_085422_add_fields_to_contracts', 1),
+(22, '2025_04_17_030605_add_columns_to_contracts_table', 1),
+(23, '2025_04_17_031037_create_contract_terms_table', 1),
+(24, '2025_04_17_041401_update_nullable_columns_in_contracts_table', 1),
+(25, '2025_05_04_123421_create_departments_table', 1),
+(26, '2025_05_04_133409_add_department_id_to_users_table', 1),
+(27, '2025_05_04_143027_create_features_table', 1),
+(28, '2025_05_04_152836_create_general_configurations_table', 1),
+(29, '2025_05_05_121212_create_general_configuration_alert_targets_table', 1),
+(30, '2025_05_05_121625_create_general_configuration_auto_updates_table', 1),
+(31, '2025_05_05_121954_create_general_configuration_notifications_table', 1),
+(32, '2025_05_05_122756_add_code_to_contract_statuses_table', 1),
+(33, '2025_05_06_141127_create_permissions_table', 1),
+(34, '2025_05_07_153002_update_contract_participants_table', 1),
+(35, '2025_05_07_155705_add_email_to_contract_participants_table', 1),
+(36, '2025_05_07_162405_make_contract_id_nullable_in_contract_participants_table', 1),
+(37, '2025_05_07_162457_add_contract_id_to_contract_participants_table', 1),
+(38, '2025_05_08_123657_create_supervisors_table', 1),
+(39, '2025_05_09_070617_create_export_templates_table', 1),
+(40, '2025_05_09_131722_add_client_id_to_contracts_table', 1),
+(41, '2025_05_09_134344_add_sign_date_to_contracts_table', 1),
+(42, '2025_05_09_135149_add_department_id_to_contracts_table', 1),
+(43, '2025_05_09_135821_drop_foreign_keys_contracts_table', 1),
+(44, '2025_05_09_141439_add_sales_employee_id_to_contracts_table', 1),
+(45, '2025_05_13_025833_create_payment_types_table', 1),
+(46, '2025_05_13_081444_add_payment_type_id_to_payments_table', 1),
+(47, '2025_05_13_081607_add_contract_id_to_payments_table', 1),
+(48, '2025_05_13_082054_remove_invoice_id_from_payments_table', 1),
+(49, '2025_05_16_035332_alter_email_nullable_in_clients_table', 1),
+(50, '2025_05_16_040844_alter_email_nullable_in_contract_participants_table', 1),
+(51, '2025_05_16_053227_alter_columns_nullable_in_products_table', 1),
+(52, '2025_05_16_053547_alter_columns_nullable_in_products_table', 1),
+(53, '2025_05_16_163141_add_columns_to_contracts_table', 1),
+(54, '2025_05_22_044416_add_fields_to_users_table', 2),
+(55, '2025_07_08_042703_add_auth_fields_to_clients_table', 3),
+(56, '2025_07_08_054249_create_personal_access_tokens_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `amount_paid` decimal(15,2) NOT NULL,
+  `payment_date` date NOT NULL,
+  `method` enum('pay','cash') NOT NULL DEFAULT 'pay',
+  `received_by` bigint(20) UNSIGNED NOT NULL,
+  `note` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `payment_type_id` bigint(20) UNSIGNED NOT NULL,
+  `contract_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `payment_types`
+--
+
+CREATE TABLE `payment_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `payment_types`
+--
+
+INSERT INTO `payment_types` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Thanh toán đợt', 'Thanh toán theo các đợt đã thỏa thuận trong hợp đồng (như đợt 1, đợt 2, v.v.)', '2025-05-12 13:08:23', '2025-05-12 13:08:23'),
+(2, 'Tạm ứng', 'Khoản tiền thanh toán trước khi thực hiện công việc', '2025-05-12 13:08:54', '2025-05-12 13:08:54'),
+(3, 'Thanh toán cuối', 'Khoản thanh toán sau khi hoàn thành hợp đồng', '2025-05-12 13:09:06', '2025-05-12 13:10:48'),
+(4, 'Thanh toán phạt', 'Khoản thanh toán do vi phạm điều khoản nào đó', '2025-05-12 13:11:02', '2025-05-12 13:11:02'),
+(5, 'Hoàn tiền ', 'Khoản tiền hoàn trả cho đối tác', '2025-05-12 13:11:14', '2025-05-12 13:11:14'),
+(6, 'Thanh toán bổ sung', 'Các khoản thanh toán phát sinh ngoài thỏa thuận ban đầu', '2025-05-12 13:11:52', '2025-05-12 13:11:52'),
+(7, 'Thanh toán', 'Thanh toán thông thường theo tiến độ thực hiện hợp đồng', '2025-05-12 13:12:54', '2025-05-12 13:12:54');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `feature_id` bigint(20) UNSIGNED NOT NULL,
+  `enable` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `role_id`, `feature_id`, `enable`, `created_at`, `updated_at`) VALUES
+(38, 1, 1, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(39, 1, 2, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(40, 1, 3, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(41, 1, 4, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(42, 1, 5, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(43, 1, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(44, 1, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(45, 1, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(46, 1, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(47, 1, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(48, 1, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(49, 1, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(50, 1, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(51, 1, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(52, 1, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(53, 2, 1, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(54, 2, 2, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(55, 2, 3, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(56, 2, 4, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(57, 2, 5, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(58, 2, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(59, 2, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(60, 2, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(61, 2, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(62, 2, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(63, 2, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(64, 2, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(65, 2, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(66, 2, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(67, 2, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(68, 3, 1, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(69, 3, 2, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(70, 3, 3, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(71, 3, 4, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(72, 3, 5, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(73, 3, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(74, 3, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(75, 3, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(76, 3, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(77, 3, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(78, 3, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(79, 3, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(80, 3, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(81, 3, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(82, 3, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(83, 4, 1, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(84, 4, 2, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(85, 4, 3, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(86, 4, 4, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(87, 4, 5, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(88, 4, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(89, 4, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(90, 4, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(91, 4, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(92, 4, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(93, 4, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(94, 4, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(95, 4, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(96, 4, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(97, 4, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(98, 5, 1, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(99, 5, 2, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(100, 5, 3, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(101, 5, 4, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(102, 5, 5, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(103, 5, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(104, 5, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(105, 5, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(106, 5, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(107, 5, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(108, 5, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(109, 5, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(110, 5, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(111, 5, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(112, 5, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(113, 6, 1, 0, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(114, 6, 2, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(115, 6, 3, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(116, 6, 4, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(117, 6, 5, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(118, 6, 6, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(119, 6, 7, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(120, 6, 8, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(121, 6, 9, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(122, 6, 10, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(123, 6, 11, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(124, 6, 12, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(125, 6, 13, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(126, 6, 14, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56'),
+(127, 6, 15, 1, '2025-05-06 00:56:10', '2025-06-19 06:23:56');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\Client', 22, 'customer-portal', '93c50edac4ca84902c16393afffbb368287e765a072f98016fea16c7835d6f89', '[\"*\"]', NULL, NULL, '2025-07-07 22:43:18', '2025-07-07 22:43:18'),
+(2, 'App\\Models\\Client', 22, 'customer-portal', 'c0f108b1449dbef73bcf225cc81e175c415b1ef0a82a98f04e314a89c7285c65', '[\"*\"]', NULL, NULL, '2025-07-07 22:44:04', '2025-07-07 22:44:04'),
+(3, 'App\\Models\\Client', 22, 'customer-portal', 'a7d07badbe6f813b5868fbdc4ddd851b61ba7cab209ca20d76175c71b6c09701', '[\"*\"]', NULL, NULL, '2025-07-08 08:20:27', '2025-07-08 08:20:27'),
+(4, 'App\\Models\\Client', 22, 'customer-portal', '37a6699fc27db0d882876a5616c16358770907de4e233255f504fb1493bbe7b8', '[\"*\"]', NULL, NULL, '2025-07-08 08:47:10', '2025-07-08 08:47:10'),
+(5, 'App\\Models\\Client', 22, 'customer-portal', '40aa41b38c1c59843323628d7b494e3666ea543389aef3a8b9a29622e45efa11', '[\"*\"]', NULL, NULL, '2025-07-08 09:11:18', '2025-07-08 09:11:18'),
+(6, 'App\\Models\\Client', 22, 'customer-portal', '817096e3ef1f0eb14762cd7c65de504ae3badf94b808d273092cd861fe46c468', '[\"*\"]', NULL, NULL, '2025-07-08 09:11:37', '2025-07-08 09:11:37'),
+(7, 'App\\Models\\Client', 22, 'customer-portal', 'f5bea562be1870f82462fb567b0c2594cae69e7b7365169dcb8b89998c4b2f8b', '[\"*\"]', NULL, NULL, '2025-07-08 09:12:04', '2025-07-08 09:12:04'),
+(8, 'App\\Models\\Client', 22, 'customer-portal', '1d010b4649133b7de0c278f6090649ee1cfc06a291bab339aa6bd882075dcaf1', '[\"*\"]', NULL, NULL, '2025-07-08 09:20:22', '2025-07-08 09:20:22'),
+(9, 'App\\Models\\Client', 22, 'customer-portal', '6341ebc4ea30f5bb245e5839d21cba2d60c49ef506c59836421651867a7fd3f7', '[\"*\"]', NULL, NULL, '2025-07-08 09:20:51', '2025-07-08 09:20:51'),
+(10, 'App\\Models\\Client', 22, 'customer-portal', 'b8c0161a9f636d47e098987c6a24df49fa894da2551a0e724ca8a60c56d9e1bd', '[\"*\"]', NULL, NULL, '2025-07-08 09:21:20', '2025-07-08 09:21:20'),
+(11, 'App\\Models\\Client', 22, 'customer-portal', '3962de7de2e7f3e6a885d1000cb2ece2a9d80264767f3f49db65996146ebd070', '[\"*\"]', NULL, NULL, '2025-07-08 09:24:07', '2025-07-08 09:24:07'),
+(12, 'App\\Models\\Client', 22, 'customer-portal', 'a3d8ec9fd1694677a4af0da58253f32da2f2f2e4e8eed9a99d1c8d875c82f636', '[\"*\"]', NULL, NULL, '2025-07-08 09:45:19', '2025-07-08 09:45:19'),
+(13, 'App\\Models\\Client', 22, 'customer-portal', 'f9f27cc4c7ba39299521051b02db4acf2b553fe14ed78712af936a0bcec056ce', '[\"*\"]', NULL, NULL, '2025-07-08 09:48:24', '2025-07-08 09:48:24'),
+(14, 'App\\Models\\Client', 22, 'customer-portal', '2e79ae4296a4b02bc494ead90c8318be6bd7c23069705f441df1de38fe69c494', '[\"*\"]', NULL, NULL, '2025-07-08 10:27:10', '2025-07-08 10:27:10'),
+(15, 'App\\Models\\Client', 22, 'customer-portal', '6ab9c743a92b30bf9b029c2ca58fab360cb7b5b25762d9bc7ac677a922e35566', '[\"*\"]', NULL, NULL, '2025-07-10 00:08:54', '2025-07-10 00:08:54'),
+(16, 'App\\Models\\Client', 22, 'customer-portal', '53848e2babb06a4f9e0f791feb21bb716491e8aab966c372685486d0ac3cbeeb', '[\"*\"]', NULL, NULL, '2025-07-10 00:09:47', '2025-07-10 00:09:47'),
+(17, 'App\\Models\\Client', 22, 'customer-portal', 'fb704a0c0ac4e472d1cecff3e181e8b69388d4c406d4297c713cae4d275f2153', '[\"*\"]', NULL, NULL, '2025-07-10 00:44:28', '2025-07-10 00:44:28'),
+(18, 'App\\Models\\Client', 22, 'customer-portal', 'afc87f70d5415f48d8bc0a37b018e49300116f71867a4de1d5b03d437536959c', '[\"*\"]', NULL, NULL, '2025-07-10 00:57:28', '2025-07-10 00:57:28'),
+(19, 'App\\Models\\Client', 22, 'customer-portal', '739ade1beb21246c3f752fdb0907a71c4b440fba2d0c17d75939fb71b26cb2fe', '[\"*\"]', NULL, NULL, '2025-07-10 01:04:31', '2025-07-10 01:04:31'),
+(20, 'App\\Models\\Client', 22, 'customer-portal', '6ee64616291cd2693daaa9f07d59635b5c5c75fff6f7b67205b92a1159f1ff58', '[\"*\"]', NULL, NULL, '2025-07-10 01:05:52', '2025-07-10 01:05:52'),
+(21, 'App\\Models\\Client', 22, 'customer-portal', '6a4585db85f5183892442f399125fae7d7bd746414306372549b44c1566d4d8a', '[\"*\"]', NULL, NULL, '2025-07-10 01:08:08', '2025-07-10 01:08:08'),
+(22, 'App\\Models\\Client', 22, 'customer-portal', 'e32d9c1a533987a502cd00b9f47d2257a7f7226aa3534f6ab535a383c3ac2ac2', '[\"*\"]', NULL, NULL, '2025-07-10 01:09:45', '2025-07-10 01:09:45'),
+(23, 'App\\Models\\Client', 22, 'customer-portal', '3e44d4a403f8887a8135133d173fece79a346deebcb948ed612fa4156289a866', '[\"*\"]', NULL, NULL, '2025-07-10 01:10:13', '2025-07-10 01:10:13');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(15,2) NOT NULL,
+  `number` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `unit` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `number`, `image`, `created_at`, `updated_at`, `unit`) VALUES
+(3, NULL, 'Chức năng Quản lý Đào Tạo', NULL, 40000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(4, NULL, 'Chức năng Quản lý điểm', NULL, 20000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(5, NULL, 'Chức năng Quản lý tuyển sinh', NULL, 7000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(6, NULL, 'Chức năng Quản lý tra cứu văn bằng, chứng chỉ', NULL, 5000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(7, NULL, 'Chức năng Giảng viên', NULL, 10000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(8, NULL, 'Chức năng Sinh viên', NULL, 6000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm'),
+(9, NULL, 'Chức năng Quản lý phân quyền hệ thống', NULL, 10000000.00, NULL, NULL, '2025-05-16 17:10:03', '2025-05-16 17:10:03', 'Phần mềm');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `roles`
+--
+
+INSERT INTO `roles` (`id`, `code`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'hopdong', 'Hợp đồng', 'Hợp đồng với khách hàng', '2025-04-14 17:52:31', '2025-05-04 23:34:04'),
+(2, 'quanly', 'Quản Lý', 'Người quản lý hợp đồng', '2025-04-14 17:53:55', '2025-05-04 23:34:13'),
+(3, 'ketoan', 'Kế Toán', 'Kế toán', '2025-04-14 17:54:54', '2025-05-04 23:34:29'),
+(4, 'trienkhai', 'Triển Khai', 'Triển khai hợp đồng', '2025-04-14 17:55:15', '2025-05-04 23:34:40'),
+(5, 'theodoi', 'Theo dõi', 'Theo dõi hợp đồng', '2025-05-03 22:31:43', '2025-05-04 23:34:51'),
+(6, 'kinhdoanh', 'Kinh Doanh', 'Người kinh doanh ', '2025-05-04 23:35:10', '2025-05-08 23:05:51');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('r9PaeLGGSHOhHf2TS7fylobHU00p7Us3UDWnhBep', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiV2JONEc0V25BZFBCOGUweUIwVTZFS3BjRnpMcllMaVdIN0dpbTJrcSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb250cmFjdHMvMjAvZGV0YWlsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMiRtbzhndXA2MWtjbUJkY2VqWnpoWS91VEVVRXVybnJ4c2o5Lll2WUE1YWpMY0N6Vy9ZNmxBSyI7fQ==', 1752135214);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `supervisors`
+--
+
+CREATE TABLE `supervisors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contract_type_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `supervisors`
+--
+
+INSERT INTO `supervisors` (`id`, `contract_type_id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(6, 2, 1, 3, '2025-05-08 16:36:04', '2025-05-08 16:36:04'),
+(7, 2, 2, 4, '2025-05-08 16:36:13', '2025-05-08 16:36:13'),
+(8, 2, 3, 5, '2025-05-08 16:36:21', '2025-05-08 16:36:21'),
+(9, 2, 4, 6, '2025-05-08 16:36:30', '2025-05-08 16:36:30'),
+(10, 2, 5, 7, '2025-05-08 16:39:47', '2025-05-08 16:39:47');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `department_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `birth` date DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `department_id`, `avatar`, `birth`, `phone`, `address`) VALUES
+(1, 'admin@gmail.com', 'admin@gmail.com', NULL, '$2y$12$mo8gup61kcmBdcejZzhY/uTEUEurnrxsj9.YvYA5ajLcCzW/Y6lAK', NULL, '2025-05-21 21:28:05', '2025-05-21 21:28:05', NULL, NULL, NULL, NULL, NULL),
+(3, 'Nguyễn Phúc Nguyên', 'nguyen@gmail.com', NULL, '$2y$12$J8fkAzszjbpK/2mEnRV05.gq4.hJ1qicx/rakrrtYP2XQ.PccqOmi', NULL, '2025-04-14 18:00:34', '2025-06-19 06:39:52', 1, 'avatars/180564c0d2ee08b051ff.jpg', '2003-02-20', '0369874512', 'Hậu Giang'),
+(4, 'Lê Minh Khang ', 'khang@gmail.com', NULL, '$2y$12$aMW8IJ1czMhgVSo1OpWm.OE./kWzUBGA14swL7zqFgp8OvmAyV0hq', NULL, '2025-04-16 18:09:00', '2025-06-19 06:45:22', 5, 'avatars/1b38b5e9483e9260cb2f.jpg', '2003-10-20', '03412244343', 'Kiên Giang'),
+(5, 'Cô Văn Muông', 'muong@gmail.com', NULL, '$2y$12$Ppbnj7oRGbRNPZxruViMiu.PQ/0TDNFuQQ0Pe7asn/t673TKudmiq', NULL, '2025-04-16 18:09:56', '2025-06-19 06:40:21', 4, 'avatars/89a253591da6d2f88bb7.jpg', '2003-11-11', '03451353535', 'Kiên Giang'),
+(6, 'Nguyễn Văn Đãm', 'dam@gmail.com', NULL, '$2y$12$7OpXxxSHbhvVnaq02h/11Oy07I4f3qL4cNcTMsEL3ljcfTAylh/OC', NULL, '2025-04-16 18:10:50', '2025-06-19 06:40:44', 3, 'avatars/180564c0d2ee08b051ff.jpg', '2003-10-22', '0341385934', 'Hậu Giang'),
+(7, 'Hồ Văn Tới', 'hovantoi@gmail.com', '2025-05-05 03:07:01', '$2y$12$lOPP8uLhFnuEh383.0Nmbed9LGxRrl/aLI3w1QAB437gkAYatoIBG', 'Zot2rLtIjh', '2025-05-05 03:07:01', '2025-05-08 16:39:28', 1, 'avatars/119cfd8385954ecb1784.jpg', '2003-10-09', '0924318374', 'Kiên Giang'),
+(14, 'ffff', 'f@gmail.com', NULL, '$2y$12$9T..MX2OGMisEq.O28Sz9e9N6vioeHwtSoGGHqt24/7ZJoFmDWtcG', NULL, '2025-06-30 00:26:19', '2025-06-30 00:26:19', 2, 'avatars/z6756877644113_291bc7fbfc96a61c2d9cd91cbfa47062.jpg', '1111-11-11', '7897946745', '988LI'),
+(16, 'aaa', 'admin1@gmail.com', NULL, '$2y$12$CnjlrrZLnzACC5xNii6E2.PlN7S6LWFtP3JgidwBzb1prx0ovY7c6', NULL, '2025-06-30 00:28:06', '2025-06-30 00:28:06', 5, 'avatars/z6756877644113_291bc7fbfc96a61c2d9cd91cbfa47062.jpg', '1111-11-11', '7897946745', 'Kiên Giang'),
+(17, 'mami', 'muongthay28@gmail.com', NULL, '$2b$12$Yw2YubNnrdC5mqKEf7c7auTN4CKJS7/J4YalDui/Me06YhcZBz5rO', NULL, '2025-07-06 12:06:23', '2025-07-06 12:06:23', NULL, NULL, '2004-04-06', '0928282821', '234. Lê Quý ĐÔn ');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `cache`
+--
+ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Chỉ mục cho bảng `cache_locks`
+--
+ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Chỉ mục cho bảng `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `clients_email_unique` (`email`);
+
+--
+-- Chỉ mục cho bảng `contracts`
+--
+ALTER TABLE `contracts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `contracts_contract_number_unique` (`contract_number`),
+  ADD KEY `contracts_contract_type_id_foreign` (`contract_type_id`),
+  ADD KEY `contracts_contract_status_id_foreign` (`contract_status_id`),
+  ADD KEY `contracts_client_id_foreign` (`client_id`),
+  ADD KEY `contracts_department_id_foreign` (`department_id`),
+  ADD KEY `contracts_sales_employee_id_foreign` (`sales_employee_id`);
+
+--
+-- Chỉ mục cho bảng `contract_adjustments`
+--
+ALTER TABLE `contract_adjustments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_adjustments_contract_id_foreign` (`contract_id`),
+  ADD KEY `contract_adjustments_adjusted_by_foreign` (`adjusted_by`);
+
+--
+-- Chỉ mục cho bảng `contract_attachments`
+--
+ALTER TABLE `contract_attachments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_attachments_contract_id_foreign` (`contract_id`),
+  ADD KEY `contract_attachments_uploaded_by_foreign` (`uploaded_by`);
+
+--
+-- Chỉ mục cho bảng `contract_notes`
+--
+ALTER TABLE `contract_notes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_notes_contract_id_foreign` (`contract_id`),
+  ADD KEY `contract_notes_created_by_foreign` (`created_by`);
+
+--
+-- Chỉ mục cho bảng `contract_participants`
+--
+ALTER TABLE `contract_participants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_participants_contract_id_foreign` (`contract_id`);
+
+--
+-- Chỉ mục cho bảng `contract_products`
+--
+ALTER TABLE `contract_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_products_product_id_foreign` (`product_id`),
+  ADD KEY `contract_products_contract_id_foreign` (`contract_id`);
+
+--
+-- Chỉ mục cho bảng `contract_statuses`
+--
+ALTER TABLE `contract_statuses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `contract_terms`
+--
+ALTER TABLE `contract_terms`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contract_terms_contract_id_foreign` (`contract_id`);
+
+--
+-- Chỉ mục cho bảng `contract_types`
+--
+ALTER TABLE `contract_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `contract_types_name_unique` (`name`);
+
+--
+-- Chỉ mục cho bảng `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `departments_code_unique` (`code`),
+  ADD KEY `departments_manager_id_foreign` (`manager_id`);
+
+--
+-- Chỉ mục cho bảng `export_templates`
+--
+ALTER TABLE `export_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `export_templates_contract_type_id_foreign` (`contract_type_id`);
+
+--
+-- Chỉ mục cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `features_code_unique` (`code`);
+
+--
+-- Chỉ mục cho bảng `general_configurations`
+--
+ALTER TABLE `general_configurations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `general_configuration_alert_targets`
+--
+ALTER TABLE `general_configuration_alert_targets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `general_configuration_alert_targets_role_id_foreign` (`role_id`);
+
+--
+-- Chỉ mục cho bảng `general_configuration_auto_updates`
+--
+ALTER TABLE `general_configuration_auto_updates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `general_configuration_notifications`
+--
+ALTER TABLE `general_configuration_notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `general_configuration_notifications_role_id_foreign` (`role_id`),
+  ADD KEY `general_configuration_notifications_status_id_foreign` (`status_id`);
+
+--
+-- Chỉ mục cho bảng `invoices`
+--
+ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invoices_contract_id_foreign` (`contract_id`);
+
+--
+-- Chỉ mục cho bảng `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
+-- Chỉ mục cho bảng `job_batches`
+--
+ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Chỉ mục cho bảng `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payments_received_by_foreign` (`received_by`),
+  ADD KEY `payments_payment_type_id_foreign` (`payment_type_id`),
+  ADD KEY `payments_contract_id_foreign` (`contract_id`);
+
+--
+-- Chỉ mục cho bảng `payment_types`
+--
+ALTER TABLE `payment_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `permissions_role_id_foreign` (`role_id`),
+  ADD KEY `permissions_feature_id_foreign` (`feature_id`);
+
+--
+-- Chỉ mục cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Chỉ mục cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_category_id_foreign` (`category_id`);
+
+--
+-- Chỉ mục cho bảng `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Chỉ mục cho bảng `supervisors`
+--
+ALTER TABLE `supervisors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `supervisors_contract_type_id_foreign` (`contract_type_id`),
+  ADD KEY `supervisors_role_id_foreign` (`role_id`),
+  ADD KEY `supervisors_user_id_foreign` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_department_id_foreign` (`department_id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT cho bảng `contracts`
+--
+ALTER TABLE `contracts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_adjustments`
+--
+ALTER TABLE `contract_adjustments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_attachments`
+--
+ALTER TABLE `contract_attachments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_notes`
+--
+ALTER TABLE `contract_notes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_participants`
+--
+ALTER TABLE `contract_participants`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_products`
+--
+ALTER TABLE `contract_products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_statuses`
+--
+ALTER TABLE `contract_statuses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_terms`
+--
+ALTER TABLE `contract_terms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `contract_types`
+--
+ALTER TABLE `contract_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `export_templates`
+--
+ALTER TABLE `export_templates`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT cho bảng `general_configurations`
+--
+ALTER TABLE `general_configurations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `general_configuration_alert_targets`
+--
+ALTER TABLE `general_configuration_alert_targets`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
+
+--
+-- AUTO_INCREMENT cho bảng `general_configuration_auto_updates`
+--
+ALTER TABLE `general_configuration_auto_updates`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `general_configuration_notifications`
+--
+ALTER TABLE `general_configuration_notifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT cho bảng `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT cho bảng `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `payment_types`
+--
+ALTER TABLE `payment_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+
+--
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `supervisors`
+--
+ALTER TABLE `supervisors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `contracts`
+--
+ALTER TABLE `contracts`
+  ADD CONSTRAINT `contracts_client_id_foreign` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contracts_contract_status_id_foreign` FOREIGN KEY (`contract_status_id`) REFERENCES `contract_statuses` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contracts_contract_type_id_foreign` FOREIGN KEY (`contract_type_id`) REFERENCES `contract_types` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contracts_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contracts_sales_employee_id_foreign` FOREIGN KEY (`sales_employee_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_adjustments`
+--
+ALTER TABLE `contract_adjustments`
+  ADD CONSTRAINT `contract_adjustments_adjusted_by_foreign` FOREIGN KEY (`adjusted_by`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contract_adjustments_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_attachments`
+--
+ALTER TABLE `contract_attachments`
+  ADD CONSTRAINT `contract_attachments_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contract_attachments_uploaded_by_foreign` FOREIGN KEY (`uploaded_by`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_notes`
+--
+ALTER TABLE `contract_notes`
+  ADD CONSTRAINT `contract_notes_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contract_notes_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_participants`
+--
+ALTER TABLE `contract_participants`
+  ADD CONSTRAINT `contract_participants_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_products`
+--
+ALTER TABLE `contract_products`
+  ADD CONSTRAINT `contract_products_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `contract_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `contract_terms`
+--
+ALTER TABLE `contract_terms`
+  ADD CONSTRAINT `contract_terms_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `departments`
+--
+ALTER TABLE `departments`
+  ADD CONSTRAINT `departments_manager_id_foreign` FOREIGN KEY (`manager_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
+-- Các ràng buộc cho bảng `export_templates`
+--
+ALTER TABLE `export_templates`
+  ADD CONSTRAINT `export_templates_contract_type_id_foreign` FOREIGN KEY (`contract_type_id`) REFERENCES `contract_types` (`id`) ON DELETE SET NULL;
+
+--
+-- Các ràng buộc cho bảng `general_configuration_alert_targets`
+--
+ALTER TABLE `general_configuration_alert_targets`
+  ADD CONSTRAINT `general_configuration_alert_targets_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `general_configuration_notifications`
+--
+ALTER TABLE `general_configuration_notifications`
+  ADD CONSTRAINT `general_configuration_notifications_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `general_configuration_notifications_status_id_foreign` FOREIGN KEY (`status_id`) REFERENCES `contract_statuses` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `invoices`
+--
+ALTER TABLE `invoices`
+  ADD CONSTRAINT `invoices_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_contract_id_foreign` FOREIGN KEY (`contract_id`) REFERENCES `contracts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `payments_payment_type_id_foreign` FOREIGN KEY (`payment_type_id`) REFERENCES `payment_types` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `payments_received_by_foreign` FOREIGN KEY (`received_by`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `permissions`
+--
+ALTER TABLE `permissions`
+  ADD CONSTRAINT `permissions_feature_id_foreign` FOREIGN KEY (`feature_id`) REFERENCES `features` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `products` (`id`) ON DELETE SET NULL;
+
+--
+-- Các ràng buộc cho bảng `supervisors`
+--
+ALTER TABLE `supervisors`
+  ADD CONSTRAINT `supervisors_contract_type_id_foreign` FOREIGN KEY (`contract_type_id`) REFERENCES `contract_types` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `supervisors_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `supervisors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE SET NULL;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

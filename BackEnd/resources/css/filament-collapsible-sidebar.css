@@ -1,0 +1,71 @@
+/* Collapsible Sidebar Styles */
+.fi-sidebar {
+    transition: width 0.3s ease;
+}
+
+.fi-sidebar.collapsed {
+    width: auto;
+    min-width: auto;
+    overflow: visible;
+}
+
+/* Hide sidebar content except header when collapsed */
+.fi-sidebar.collapsed .fi-sidebar-nav,
+.fi-sidebar.collapsed .fi-sidebar-group,
+.fi-sidebar.collapsed .fi-sidebar-item:not(.fi-sidebar-header) {
+    display: none;
+}
+
+/* Keep only header visible when collapsed */
+.fi-sidebar.collapsed .fi-sidebar-header {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    position: fixed;
+    width: auto;
+    left: 1rem;
+    top: 1rem;
+    margin: 0;
+    padding-left: 3rem;
+}
+
+.fi-main {
+    transition: margin-left 0.3s ease, width 0.3s ease, max-width 0.3s ease;
+}
+
+.fi-main.expanded {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Force content to full width in expanded mode */
+.fi-main.expanded .fi-page {
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* Sidebar toggle container styles */
+.sidebar-toggle-container {
+    position: fixed;
+    left: 16rem;
+    top: 1rem;
+    z-index: 50;
+    background-color: transparent;
+    transition: left 0.3s ease;
+}
+
+.fi-sidebar.collapsed + div .sidebar-toggle-container {
+    left: 1rem;
+}
+
+#sidebar-toggle {
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dark #sidebar-toggle {
+    background-color: var(--gray-800);
+} 
